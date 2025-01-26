@@ -1,139 +1,389 @@
-<!-- markdownlint-disable-next-line -->
-# <img src="https://opentelemetry.io/img/logos/opentelemetry-logo-nav.png" alt="OTel logo" width="45"> OpenTelemetry Demo
+## Otel Astronomy Shop Demo App
 
-[![Slack](https://img.shields.io/badge/slack-@cncf/otel/demo-brightgreen.svg?logo=slack)](https://cloud-native.slack.com/archives/C03B4CWV4DA)
-[![Version](https://img.shields.io/github/v/release/open-telemetry/opentelemetry-demo?color=blueviolet)](https://github.com/open-telemetry/opentelemetry-demo/releases)
-[![Commits](https://img.shields.io/github/commits-since/open-telemetry/opentelemetry-demo/latest?color=ff69b4&include_prereleases)](https://github.com/open-telemetry/opentelemetry-demo/graphs/commit-activity)
-[![Downloads](https://img.shields.io/docker/pulls/otel/demo)](https://hub.docker.com/r/otel/demo)
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg?color=red)](https://github.com/open-telemetry/opentelemetry-demo/blob/main/LICENSE)
-[![Integration Tests](https://github.com/open-telemetry/opentelemetry-demo/actions/workflows/run-integration-tests.yml/badge.svg)](https://github.com/open-telemetry/opentelemetry-demo/actions/workflows/run-integration-tests.yml)
-[![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/opentelemetry-demo)](https://artifacthub.io/packages/helm/opentelemetry-helm/opentelemetry-demo)
-[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/9247/badge)](https://www.bestpractices.dev/en/projects/9247)
 
-## Welcome to the OpenTelemetry Astronomy Shop Demo
+What is Open Telemetry (OTel)?
+OpenTelemetry is an open-source project designed to provide a unified standard for collecting and managing telemetry data from software applications, including traces, metrics, and logs. It helps in observing and understanding the behavior of applications and systems by offering a set of APIs, libraries, and agents for instrumenting code and exporting telemetry data.
 
-This repository contains the OpenTelemetry Astronomy Shop, a microservice-based
-distributed system intended to illustrate the implementation of OpenTelemetry in
-a near real-world environment.
 
-Our goals are threefold:
+<img width="459" alt="image" src="https://github.com/user-attachments/assets/ef852415-6a81-4732-a368-2774ba044a38" />
 
-- Provide a realistic example of a distributed system that can be used to
-  demonstrate OpenTelemetry instrumentation and observability.
-- Build a base for vendors, tooling authors, and others to extend and
-  demonstrate their OpenTelemetry integrations.
-- Create a living example for OpenTelemetry contributors to use for testing new
-  versions of the API, SDK, and other components or enhancements.
 
-We've already made [huge
-progress](https://github.com/open-telemetry/opentelemetry-demo/blob/main/CHANGELOG.md),
-and development is ongoing. We hope to represent the full feature set of
-OpenTelemetry across its languages in the future.
+Architecture Diagram
 
-If you'd like to help (**which we would love**), check out our [contributing
-guidance](./CONTRIBUTING.md).
+<img width="435" alt="image" src="https://github.com/user-attachments/assets/0a4042ef-db8e-41fc-8547-852368bee19a" />
 
-If you'd like to extend this demo or maintain a fork of it, read our
-[fork guidance](https://opentelemetry.io/docs/demo/forking/).
 
-## Quick start
 
-You can be up and running with the demo in a few minutes. Check out the docs for
-your preferred deployment method:
+## Prerequisites:
+1. AWS Cloud
 
-- [Docker](https://opentelemetry.io/docs/demo/docker_deployment/)
-- [Kubernetes](https://opentelemetry.io/docs/demo/kubernetes_deployment/)
+# Steps:
 
-## Documentation
+Create EC2 instance with the following configurations: 	
+- Ubuntu 22
+- T2.xlarge (More than 6GB ram required)
+- 15GB storage
 
-For detailed documentation, see [Demo Documentation][docs]. If you're curious
-about a specific feature, the [docs landing page][docs] can point you in the
-right direction.
+<img width="287" alt="image" src="https://github.com/user-attachments/assets/56fcc5a3-2917-4bce-b57e-381f22fc83f6" />
 
-## Demos featuring the Astronomy Shop
 
-We welcome any vendor to fork the project to demonstrate their services and
-adding a link below. The community is committed to maintaining the project and
-keeping it up to date for you.
 
-|                           |                |                                  |
-|---------------------------|----------------|----------------------------------|
-| [AlibabaCloud LogService] | [Elastic]      | [OpenSearch]                     |
-| [AppDynamics]             | [Google Cloud] | [Sentry]                         |
-| [Aspecto]                 | [Grafana Labs] | [ServiceNow Cloud Observability] |
-| [Axiom]                   | [Guance]       | [Splunk]                         |
-| [Axoflow]                 | [Honeycomb.io] | [Sumo Logic]                     |
-| [Azure Data Explorer]     | [Instana]      | [TelemetryHub]                   |
-| [Coralogix]               | [Kloudfuse]    | [Teletrace]                      |
-| [Dash0]                   | [Liatrio]      | [Tracetest]                      |
-| [Datadog]                 | [Logz.io]      | [Uptrace]                        |
-| [Dynatrace]               | [New Relic]    |                                  |
 
-## Contributing
 
-To get involved with the project see our [CONTRIBUTING](CONTRIBUTING.md)
-documentation. Our [SIG Calls](CONTRIBUTING.md#join-a-sig-call) are every other
-Monday at 8:30 AM PST and anyone is welcome.
+Clone the repo:
 
-## Project leadership
+<img width="468" alt="image" src="https://github.com/user-attachments/assets/542c6dee-422f-4df4-93e4-9cd61d3e5c36" />
+<img width="468" alt="image" src="https://github.com/user-attachments/assets/d28f6542-b12e-438c-94d6-820ced1b42eb" />
 
-[Maintainers](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#maintainer)
-([@open-telemetry/demo-maintainers](https://github.com/orgs/open-telemetry/teams/demo-maintainers)):
 
-- [Juliano Costa](https://github.com/julianocosta89), Datadog
-- [Mikko Viitanen](https://github.com/mviitane), Dynatrace
-- [Pierre Tessier](https://github.com/puckpuck), Honeycomb
+As a DevOps Engineer you should understand what this project is doing and how things are happening so letʼs understand the docker compose file responsible for deploying the app.
 
-[Approvers](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#approver)
-([@open-telemetry/demo-approvers](https://github.com/orgs/open-telemetry/teams/demo-approvers)):
+## Understanding the docker compose file structure!
 
-- [Cedric Ziel](https://github.com/cedricziel) Grafana Labs
-- [Penghan Wang](https://github.com/wph95), AppDynamics
-- [Reiley Yang](https://github.com/reyang), Microsoft
-- [Roger Coll](https://github.com/rogercoll), Elastic
-- [Ziqi Zhao](https://github.com/fatsheep9146), Alibaba
+This Docker Compose file is designed to set up an observability demo
+environment using various microservices. If you're new to observability, here's how you can understand this setup:
+https://github.com/open-telemetry/opentelemetry-demo/blob/main/docker- compose.yml
 
-Emeritus:
+# Breakdown of the File:
+- # Logging Configuration ( x-default-logging):
+  This section defines how logs are handled. The logs are stored in JSON format with    limits on file size (5m) and number of files (2). The <img width="21" alt="image" src="https://github.com/user-attachments/assets/6cee0de3-fe12-4257-ac6a-5102bf04985f" /> option adds a name tag to each log entry, which is useful for identifying which       service generated the log.
+  
+ - # Networks:
+  The	networks section defines a custom network called <img width="96" alt="image" src="https://github.com/user-attachments/assets/1ca7ab7f-bbbf-42ed-9c22-5d3b505d6638" /> using the bridge driver, which allows containers to communicate with each other.
+	
+- # Services:
+  Each service represents a different microservice in the application. These microservices work together to form a complete application.
 
-- [Austin Parker](https://github.com/austinlparker)
-- [Carter Socha](https://github.com/cartersocha)
-- [Michael Maxwell](https://github.com/mic-max)
-- [Morgan McLean](https://github.com/mtwo)
+# Service Details:
 
-### Thanks to all the people who have contributed
+<img width="453" alt="image" src="https://github.com/user-attachments/assets/20c703dc-0ab6-4970-9f4a-7dcf7c8023b3" />
 
-[![contributors](https://contributors-img.web.app/image?repo=open-telemetry/opentelemetry-demo)](https://github.com/open-telemetry/opentelemetry-demo/graphs/contributors)
+Microservices in the app and the languages they are written in.
 
-[docs]: https://opentelemetry.io/docs/demo/
+1.** Core Demo Services: Application services written in different languages.
 
-<!-- Links for Demos featuring the Astronomy Shop section -->
+2.** Dependent Services: Services that the application services depend on like Redis, Kafka etc.
 
-[AlibabaCloud LogService]: https://github.com/aliyun-sls/opentelemetry-demo
-[AppDynamics]: https://www.appdynamics.com/blog/cloud/how-to-observe-opentelemetry-demo-app-in-appdynamics-cloud/
-[Aspecto]: https://github.com/aspecto-io/opentelemetry-demo
-[Axiom]: https://play.axiom.co/axiom-play-qf1k/dashboards/otel.traces.otel-demo-traces
-[Axoflow]: https://axoflow.com/opentelemetry-support-in-more-detail-in-axosyslog-and-syslog-ng/
-[Azure Data Explorer]: https://github.com/Azure/Azure-kusto-opentelemetry-demo
-[Coralogix]: https://coralogix.com/blog/configure-otel-demo-send-telemetry-data-coralogix
-[Dash0]: https://github.com/dash0hq/opentelemetry-demo
-[Datadog]: https://docs.datadoghq.com/opentelemetry/guide/otel_demo_to_datadog
-[Dynatrace]: https://www.dynatrace.com/news/blog/opentelemetry-demo-application-with-dynatrace/
-[Elastic]: https://github.com/elastic/opentelemetry-demo
-[Google Cloud]: https://github.com/GoogleCloudPlatform/opentelemetry-demo
-[Grafana Labs]: https://github.com/grafana/opentelemetry-demo
-[Guance]: https://github.com/GuanceCloud/opentelemetry-demo
-[Honeycomb.io]: https://github.com/honeycombio/opentelemetry-demo
-[Instana]: https://github.com/instana/opentelemetry-demo
-[Kloudfuse]: https://github.com/kloudfuse/opentelemetry-demo
-[Liatrio]: https://github.com/liatrio/opentelemetry-demo
-[Logz.io]: https://logz.io/learn/how-to-run-opentelemetry-demo-with-logz-io/
-[New Relic]: https://github.com/newrelic/opentelemetry-demo
-[OpenSearch]: https://github.com/opensearch-project/opentelemetry-demo
-[Sentry]: https://github.com/getsentry/opentelemetry-demo
-[ServiceNow Cloud Observability]: https://docs.lightstep.com/otel/quick-start-operator#send-data-from-the-opentelemetry-demo
-[Splunk]: https://github.com/signalfx/opentelemetry-demo
-[Sumo Logic]: https://www.sumologic.com/blog/common-opentelemetry-demo-application/
-[TelemetryHub]: https://github.com/TelemetryHub/opentelemetry-demo/tree/telemetryhub-backend
-[Teletrace]: https://github.com/teletrace/opentelemetry-demo
-[Tracetest]: https://github.com/kubeshop/opentelemetry-demo
-[Uptrace]: https://github.com/uptrace/uptrace/tree/master/example/opentelemetry-demo
+3.** Telemetry Components: Components that deal with the telemetry data generated by the above services like Collector, Prometheus, Grafana, OpenSearch, Jaeger.
+
+- # Accounting Service (accountingservice):
+  - ** Image: Specifies the Docker image used to run the service.
+    
+  - ** Build: Defines how the service is built, including the Dockerfile to use.
+    
+  - ** Environment Variables: Configures how the service interacts with other parts of the system, like setting the endpoint for sending telemetry data to
+an OpenTelemetry collector (	).
+Dependencies:	ensures certain services like
+(OpenTelemetry Collector) and	are started before this service.
+Logging: Uses the predefined logging configuration.
+Ad Service (	):
+
+Similar to the accounting service but with additional ports exposed and configured for sending logs and metrics to the observability system.
+Cart Service (	):
+Handles shopping cart operations and interacts with other services like
+, all while sending telemetry data to OpenTelemetry.
+Checkout Service (	):
+Manages the checkout process. It depends on multiple other services to ensure the whole checkout flow works properly. It also sends data for observability.
+
+Other Services (e.g.,
+
+,
+
+,	):
+
+Each of these services plays a specific role in the application (like handling currency conversion, sending emails, or detecting fraud) and is configured similarly with dependencies, logging, and observability settings.
+Frontend (	) and Frontend Proxy (	):
+
+
+The
+
+services.
+
+service is the user-facing part of the application, while helps manage traffic between the frontend and backend
+
+Image Provider (
+ The
+
+) and Load Generator (	): supplies images to the frontend, and the
+
+simulates user traffic to test the system'ssrc/flagd/demo.flagd.json performance.
+
+
+Observability in Action:
+	Telemetry Data: Most services are configured to send data (logs, metrics, and
+
+traces) to an OpenTelemetry Collector ( this data, making it available for analysis.
+
+), which collects and processes
+
+Dependencies: The	condition ensures that services are started in
+the right order, crucial for a distributed system to function properly.
+
+We can also check how the OTEL variables are being passed as environment variables for the core demo and dependent services. The config files and the
+code for all these are in the	folder. You can go ahead and look at how each
+service is instrumented considering the language and this documentation here helps us to better understand the instrumentation for each service in detail.
+
+
+Otel Collector
+
+
+
+Receivers: Collect telemetry data (traces, metrics, logs) from various sources (e.g., applications, services, or endpoints).
+Exporters: Send the collected telemetry data to external systems or storage (e.g., logging systems, metrics platforms).
+Processors: Transform or modify the telemetry data between collection and export (e.g., batch processing, filtering, or data enrichment).
+Connectors (spanmetrics): Extracts metrics from trace data (span metrics) for further processing or export.
+Service: Defines how telemetry data flows through the system, specifying which receivers, processors, and exporters are used for traces, metrics, and logs.
+
+
+
+
+otelcol-config.yaml file explained!
+This file is a configuration for an OpenTelemetry Collector, which is used to
+collect, process, and export telemetry data (traces, metrics, logs) from various sources. Below is a breakdown of each section:
+1.Receivers
+
+The OpenTelemetry Protocol (OTLP) receiver is configured to accept
+
+telemetry data over
+
+and
+
+. The endpoint values are determined by
+
+environment variables
+
+,
+
+, and
+
+. The HTTP or HTTPS origin.
+
+configuration allows requests from any
+
+
+ 
+
+
+This receiver checks the availability of the HTTP requests to the endpoint
+
+service by sending
+.
+
+
+ 
+This receiver collects metrics related to Docker containers by connecting
+to Docker through the UNIX socket	.
+
+This receiver collects metrics from a Redis instance running at the
+
+endpoint
+collects data every
+
+, authenticating with the username
+.
+
+. It
+
+
+ 
+This receiver gathers various host-level metrics, such as CPU, disk, load, filesystem, memory, network, paging, and processes. Some metrics are filtered based on mount points and filesystem types.
+
+This receiver scrapes metrics from the OpenTelemetry Collector itself
+using Prometheus. It scrapes every	from the target	.
+
+2.Exporters
+
+This exporter is likely used for debugging purposes, exporting data to a local or testing environment.
+
+
+
+Exports traces to a Jaeger instance running at
+
+with
+
+but
+
+marked as	, meaning it doesnʼt enforce strict certificate checks.
+
+Exports metrics to Prometheus using the OTLP over HTTP at the endpoint
+, also marked as	.
+
+Exports logs to an OpenSearch instance at	. Logs are
+stored in an index named	.
+
+3.Processors
+
+This processor batches data before exporting it, which helps in reducing the number of requests sent to the exporters.
+
+This processor modifies trace data. It contains statements to replace certain parts of trace span names, such as removing query parameters
+
+(
+
+) and standardizing API endpoint names (e.g.,
+).
+
+4.Connectors
+
+This connector is used to extract metrics from trace data, allowing for metrics such as request latency to be derived from traces.
+5.Service
+
+ 
+Defines the pipelines for processing and exporting telemetry data:
+
+
+
+Receivers: [otlp]
+Processors: [transform, batch] Exporters: [otlp, debug, spanmetrics]
+This pipeline handles trace data, processes it with the
+
+
+
+
+
+and
+
+processors, and exports it using the exporters.
+
+,
+
+, and
+
+
+ 
+Receivers: [hostmetrics, docker_stats, httpcheck/frontendproxy, otlp, prometheus, redis, spanmetrics]
+Processors: [batch]
+Exporters: [otlphttp/prometheus, debug]
+This pipeline handles metrics, processes them with the
+processor, and exports them to Prometheus and the debug endpoint.
+
+
+
+Receivers: [otlp] Processors: [batch]
+Exporters: [opensearch, debug]
+This pipeline handles log data, processes it with the
+and exports it to OpenSearch and the debug endpoint.
+
+Summary
+
+
+
+
+
+
+processor,
+
+This file configures an OpenTelemetry Collector to gather telemetry data from various sources, process it, and export it to different backends like Jaeger, Prometheus, and OpenSearch. Each pipeline is responsible for a specific type of telemetry data (traces, metrics, logs), ensuring that the data is collected, processed, and exported according to the defined configuration.
+
+Now that you understood everything, lets start with deploying the application and then OBSERVE it!
+
+
+Install Docker
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Now start the application:
+
+
+
+
+
+•After a while all your containers should have been created and started.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Once all the containers are started, we can see the access them: 	Web store: http://IP:8080/
+	Grafana: http://IP:8080/grafana/
+
+Load Generator UI: http://IP:8080/loadgen/ Jaeger UI: http://IP:8080/jaeger/ui/
+
+Feature Flags
+The demo provides several feature flags that you can use to simulate different scenarios.
+
+https://opentelemetry.io/docs/demo/feature-flags/
+
+
+Flag values are stored in the	file. To enable a flag, change
+the	value in the config file for a given flag to “onˮ.
+
+
+
+View and Analyse with the Jaeger UI
+With the	feature flag enabled, letʼs see how we can use Jaeger to
+diagnose the issue to determine the root cause. Remember, that the service will generate an error for GetAds 1/10th of the time.
+
+Jaeger is usually the first tool you get in contact with when you start getting into the world of Distributed Tracing. With Jaeger, we can visualise the whole chain of events. With this visibility we can easier isolate the problem when something goes
+wrong.
+
+
+
+
+
+
+
+
+
+
+
+
+
+Metrics on Grafana
+
+
+
+
+
+
+By following these steps, you can set up and explore an observability demo environment using OpenTelemetry and Docker. This setup will help you
+understand the intricacies of distributed tracing and how to monitor and diagnose issues in microservices-based applications.
